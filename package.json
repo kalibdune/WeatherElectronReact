@@ -2,20 +2,29 @@
   "name": "weather",
   "version": "0.1.0",
   "private": true,
+  "author": "kalibdune",
+  "description": "electron weather app",
+  "main": "electron/electron.js",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
+  "productName": "weather",
   "scripts": {
-    "start": "react-scripts start",
+    "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron ."
   },
   "eslintConfig": {
     "extends": [
@@ -33,6 +42,17 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^13.1.7"
+  },
+  "build": {
+    "extends": null,
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "electron/electron.js"
     ]
   }
 }

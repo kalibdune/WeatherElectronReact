@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Home from './pages/home'
+import Weather from './pages/weather'
 
 function App() {
+
+  const [dataCity, setDataCity] = useState({lat: 0, lon: 0})
+
+  function changeDataCity(object){
+    if(!object){
+      console.log('none')
+    } else{
+      setDataCity(object)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path='/'>
+            <Home changeDataCity={changeDataCity} />
+          </Route>
+          <Route path='/weather'>
+            <Weather lat={dataCity.lat} lon={dataCity.lon} name={dataCity.name} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
